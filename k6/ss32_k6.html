@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ss32 k6</title>
+    <link rel="stylesheet" href="ss32_k6.css" />
+  </head>
+  <body>
+    <p id="textData">Chữ sẽ thay đổi kích thước khi bấm nút</p>
+    <button type="button" id="btnIncrease" class="btn btnIncrease">+</button>
+    <button type="button" id="btnDecrease" class="btn btnDecrease">-</button>
+
+    <script>
+      let textData = document.querySelector("#textData");
+      let btnIncrease = document.querySelector("#btnIncrease");
+      let btnDecrease = document.querySelector("#btnDecrease");
+
+      btnIncrease.addEventListener("click", function () {
+        let currSize = parseFloat(window.getComputedStyle(textData).fontSize);
+        console.log(currSize);
+        if (currSize < 60) {
+          textData.style.fontSize = currSize + 2 + "px";
+        }
+      });
+      btnDecrease.addEventListener("click", function () {
+        let currSize = parseFloat(window.getComputedStyle(textData).fontSize);
+        if (currSize > 10) {
+          textData.style.fontSize = currSize - 2 + "px";
+        }
+      });
+    </script>
+  </body>
+</html>
