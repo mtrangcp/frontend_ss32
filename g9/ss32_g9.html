@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ss32 g9</title>
+    <link rel="stylesheet" href="ss32_g9.css" />
+  </head>
+  <body>
+    <h1>Progress Bar with Background Effect</h1>
+
+    <div class="div div-below">
+      <div class="div div-above" id="progressBar"></div>
+    </div>
+
+    <button type="button" id="btnIncre" class="btn">Tăng tiến trình</button>
+    <button type="button" id="btnDecre" class="btn">Giảm tiến trình</button>
+
+    <script>
+      let taskBar = document.querySelector("#progressBar");
+      let btnIncre = document.querySelector("#btnIncre");
+      let btnDecre = document.querySelector("#btnDecre");
+
+      btnIncre.addEventListener("click", function () {
+        let currWidth = parseFloat(window.getComputedStyle(taskBar).width);
+        if (currWidth < 400) {
+          taskBar.style.width = currWidth + 40 + "px";
+
+          let currOpacity = parseFloat(
+            window.getComputedStyle(btnIncre).opacity
+          );
+          document.querySelectorAll("*").forEach((el) => {
+            el.style.opacity = currOpacity + 0.05;
+          });
+          console.log(currOpacity);
+        }
+      });
+      btnDecre.addEventListener("click", function () {
+        let currWidth = parseFloat(window.getComputedStyle(taskBar).width);
+        if (currWidth > 0) {
+          taskBar.style.width = currWidth - 40 + "px";
+
+          let currOpacity = parseFloat(
+            window.getComputedStyle(btnIncre).opacity
+          );
+          document.querySelectorAll("*").forEach((el) => {
+            el.style.opacity = currOpacity - 0.05;
+          });
+          console.log(currOpacity);
+        }
+      });
+    </script>
+  </body>
+</html>
