@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ss32 k7</title>
+    <link rel="stylesheet" href="ss32_k7.css" />
+  </head>
+  <body>
+    <div>
+      <img
+        src="https://wibu.com.vn/wp-content/uploads/2024/03/doraemon.png"
+        alt="img"
+        class="imgMon"
+      />
+      <img
+        src="https://wibu.com.vn/wp-content/uploads/2024/05/doremon.jpg"
+        alt="img"
+        class="imgMon"
+      />
+      <img
+        src="https://wibu.com.vn/wp-content/uploads/2024/05/Doraemon.jpg"
+        alt="img"
+        class="imgMon"
+      />
+    </div>
+    <script>
+      let imgs = document.querySelectorAll(".imgMon");
+
+      imgs.forEach((item) => {
+        item.addEventListener("click", function (event) {
+          event.stopPropagation();
+          item.style.width = "400px";
+          item.style.height = "400px";
+        });
+      });
+
+      document.addEventListener("click", function () {
+        imgs.forEach((item) => {
+          item.style.width = "100px";
+          item.style.height = "100px";
+        });
+      });
+    </script>
+  </body>
+</html>
