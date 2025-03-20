@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ss32 cb1</title>
+  </head>
+  <style>
+    .changeColor {
+      background-color: rgb(119, 146, 170);
+    }
+  </style>
+  <body>
+    <button id="btn">Doi mau nen</button>
+
+    <script>
+      let btn = document.querySelector("#btn");
+      btn.addEventListener("click", function () {
+        document.body.style.backgroundColor = `rgb(
+        ${Math.floor(Math.random() * 256)},
+        ${Math.floor(Math.random() * 256)},
+        ${Math.floor(Math.random() * 256)}
+        )`;
+      });
+    </script>
+  </body>
+</html>

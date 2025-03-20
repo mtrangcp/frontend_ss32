@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ss32 cb5</title>
+    <link rel="stylesheet" href="ss32_cb5.css" />
+  </head>
+  <body>
+    <h2>To-do List K24_PTIT</h2>
+    <div class="box">
+      <form action="#" class="form">
+        <input
+          type="text"
+          id="inputValue"
+          placeholder="Nhập nhiệm vụ"
+          class="inputText"
+        />
+        <button id="btnAdd" class="btn-add">Thêm</button>
+      </form>
+
+      <ul id="listData">
+        <!-- list render -->
+        <!-- <li>
+          <span>btn-del</span>
+          <span class="btn-del" onclick="delItem()">X</span>
+        </li> -->
+      </ul>
+    </div>
+    <script>
+      let inputText = document.querySelector("#inputValue");
+      let btnAdd = document.querySelector("#btnAdd");
+      let listTask = document.querySelector("#listData");
+      let arrTask = [];
+
+      const renderData = () => {
+        listTask.innerHTML = "";
+        // arrTask.forEach((element) => {
+        //   const liEl = document.createElement("li");
+        //   liEl.innerHTML = `<span>${element}</span> <span class="btn-del" onclick="delItem(${index})">X</span>`;
+        //   listTask.appendChild(liEl);
+        // });
+
+        const htmls = arrTask.map((item, index) => {
+          return `<li><span>${item}</span> <span class="btn-del" onclick="delItem(${index})">X</span></li>`;
+        });
+        const convertArrayToString = htmls.join("");
+        listTask.innerHTML = convertArrayToString;
+      };
+
+      btnAdd.addEventListener("click", function () {
+        event.preventDefault();
+        if (inputText.value.trim() === "") {
+          alert("Dữ liệu rỗng");
+          inputText.value = "";
+        } else {
+          let inputValue = inputText.value.trim();
+          arrTask.push(inputValue);
+          renderData();
+          inputText.value = "";
+        }
+      });
+
+      function delItem(index) {
+        arrTask.splice(index, 1);
+        renderData();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ss32 cb3</title>
+  </head>
+  <body>
+    <form action="#" id="form">
+      <input id="inputValue" type="text" placeholder="Nhập tên môn học" />
+      <button id="btn">Thêm môn học</button>
+    </form>
+    <ol id="list-lesson"></ol>
+
+    <script>
+      let inputText = document.querySelector("#inputValue");
+      let btnAdd = document.querySelector("#btn");
+      let listLesson = document.querySelector("#list-lesson");
+      const arrList = [];
+
+      const checkInput = () => {
+        if (inputText.value.trim() === "") {
+          return false;
+        } else {
+          return true;
+        }
+      };
+
+      function renderData(params) {
+        const html = arrList.map((item) => {
+          return `
+                <li>${item}</li>
+            `;
+        });
+
+        const convert = html.join("");
+        listLesson.innerHTML = convert;
+      }
+
+      btnAdd.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (checkInput()) {
+          let valueInput = inputText.value;
+          arrList.push(valueInput);
+
+          renderData();
+        } else {
+          alert("Input rỗng");
+        }
+        inputText.value = "";
+      });
+    </script>
+  </body>
+</html>

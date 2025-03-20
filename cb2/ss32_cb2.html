@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ss32 cb2</title>
+  </head>
+  <body>
+    <button id="btn">Click me</button> <br />
+    <span>Số lần bấm:</span>
+    <span id="count">0</span>
+
+    <script>
+      let btn = document.querySelector("#btn");
+      let counts = document.querySelector("#count");
+
+      btn.addEventListener("click", function () {
+        const currValue = +counts.textContent;
+        counts.textContent = currValue + 1;
+      });
+    </script>
+  </body>
+</html>

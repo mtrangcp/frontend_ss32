@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ss32 cb4</title>
+  </head>
+  <body>
+    <form action="#">
+      <input type="email" id="inputEmail" /> <br />
+      <span id="error"></span> <br />
+      <button id="btnCheck">Check</button>
+    </form>
+  </body>
+
+  <script>
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|vn)$/;
+    let inputEmail = document.querySelector("#inputEmail");
+    let btnCheck = document.querySelector("#btnCheck");
+    let errorValue = document.querySelector("#error");
+
+    btnCheck.addEventListener("click", function (event) {
+      event.preventDefault();
+      let inputValue = inputEmail.value.trim();
+
+      if (regex.test(inputValue)) {
+        errorValue.style.color = "green";
+        errorValue.textContent = "Email hợp lệ!";
+      } else {
+        errorValue.style.color = "red";
+        errorValue.textContent = "Email không hợp lệ";
+      }
+      inputEmail.value = "";
+    });
+  </script>
+</html>
