@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ss32 cb5</title>
-    <link rel="stylesheet" href="ss32_cb5.css" />
+    <title>ss32 g8</title>
+    <link rel="stylesheet" href="ss32_g8.css" />
   </head>
   <body>
     <h2>To-do List K24_PTIT</h2>
@@ -23,7 +23,11 @@
         <!-- list render -->
         <!-- <li>
           <span>btn-del</span>
-          <span class="btn-del" onclick="delItem()">X</span>
+
+          <div>
+            <button id="btnEdit" class="btn" onclick="editItem()">Sửa</button>
+            <button id="btnDel" class="btn" onclick="delItem()">Xóa</button>
+          </div>
         </li> -->
       </ul>
     </div>
@@ -37,7 +41,10 @@
         listTask.innerHTML = "";
 
         const htmls = arrTask.map((item, index) => {
-          return `<li><span>${item}</span> <span class="btn-del" onclick="delItem(${index})">X</span></li>`;
+          return `<li><span>${item}</span> <div>
+            <button id="btnEdit" class="btn" onclick="editItem('${item}',${index})">Sửa</button>
+            <button id="btnDel" class="btn" onclick="delItem(${index})">Xóa</button>
+          </div></li>`;
         });
         const convertArrayToString = htmls.join("");
         listTask.innerHTML = convertArrayToString;
@@ -45,7 +52,7 @@
 
       btnAdd.addEventListener("click", function (event) {
         event.preventDefault();
-        if (inputText.value.trim() === "") {
+        if (!inputText.value.trim()) {
           alert("Dữ liệu rỗng");
           inputText.value = "";
         } else {
@@ -59,6 +66,13 @@
       function delItem(index) {
         arrTask.splice(index, 1);
         renderData();
+      }
+      function editItem(item, index) {
+        let newValue = prompt("Chỉnh sửa công việc: ", item)?.trim();
+        if (newValue) {
+          arrTask[index] = newValue;
+          renderData();
+        }
       }
     </script>
   </body>
